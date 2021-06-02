@@ -23,9 +23,12 @@ export const Pokemon = () => {
       .then((res) => {
         console.log(res)
         const pokeName = res.data.name;
-        const pokeImages = res.data.sprites;
-        const pokeImagesURL = Object.keys(pokeImages).map((key) => {
-          return pokeImages[key];
+        const pokeImages = res.data.sprites.versions;
+        const pokeImagesURL: string[] = [];
+        Object.keys(pokeImages).map((key) => {
+          return Object.keys(pokeImages[key]).map((key2) => {
+            return pokeImagesURL.push(pokeImages[key][key2]["front_default"]);
+          })
         })
 
         setName(pokeName);
@@ -35,7 +38,7 @@ export const Pokemon = () => {
   // 画面描画
   return (
     <>
-      <h1>{name}, GETだぜ！</h1>
+      <h1>歴代の {name}, GETだぜ！</h1>
       <button style={buttonStyle} onClick={onClick}>ポケモン、GETだぜ！</button>
       <div className="flex-container">
         {images.map((image, index) => {
