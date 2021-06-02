@@ -37,9 +37,11 @@ export const Pokemon = () => {
     <>
       <h1>{name}, GETだぜ！</h1>
       <button style={buttonStyle} onClick={onClick}>ポケモン、GETだぜ！</button>
-      {images.map((image, index) => {
-        return <img key={index} sizes="1vw" src={image} alt="image" />
-      })}
+      <div className="flex-container">
+        {images.map((image, index) => {
+          return <img key={index} sizes="1vw" src={image} alt="image" />
+        })}
+      </div>
     </>
   )
 
