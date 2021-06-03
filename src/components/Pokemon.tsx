@@ -53,7 +53,7 @@ export const Pokemon = () => {
       </div>
       <div className="flex-container">
         {images && images.map((image, index) => {
-          return <img key={index} sizes="1vw" src={image} alt="alt" />
+          return <img key={index} width="100px" height="100px" src={image} alt="alt" />
         })}
       </div>
     </>
