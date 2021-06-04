@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios'
 
 export const Pokemon = () => {
   // state定義
   const [name, setName] = useState('ポケモン');
-  const [images, setImages] = useState<string[]>([])
+  const [images, setImages] = useState<string[]>(['https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/25.png'])
   // スタイル定義
   const buttonStyle = {
     border: 'none',
@@ -39,7 +39,8 @@ export const Pokemon = () => {
   };
   // クリアボタン押下時の挙動
   const onClickClear = () => {
-    setImages([]);
+    setName('ポケモン')
+    setImages(['https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/25.png']);
   }
   // 画面描画
   return (
@@ -47,9 +48,10 @@ export const Pokemon = () => {
       <h1>歴代の {name}, GETだぜ！</h1>
       <button style={buttonStyle} onClick={onClickClear}>クリア</button>
       <div className="flex-container">
-        <button className="flex-item" style={buttonStyle} onClick={() => onClick('pikachu')}>ポケモン、GETだぜ！</button>
-        <button className="flex-item" style={buttonStyle} onClick={() => onClick('pikachu')}>ポケモン、GETだぜ！</button>
-        <button className="flex-item" style={buttonStyle} onClick={() => onClick('pikachu')}>ポケモン、GETだぜ！</button>
+        <button className="flex-item" style={buttonStyle} onClick={() => onClick('pikachu')}>ピカチュウ、GETだぜ！</button>
+        <button className="flex-item" style={buttonStyle} onClick={() => onClick('charmander')}>ヒトカゲ、GETだぜ！</button>
+        <button className="flex-item" style={buttonStyle} onClick={() => onClick('squirtle')}>ゼニガメ、GETだぜ！</button>
+        <button className="flex-item" style={buttonStyle} onClick={() => onClick('bulbasaur')}>フシギダネ、GETだぜ！</button>
       </div>
       <div className="flex-container">
         {images && images.map((image, index) => {
